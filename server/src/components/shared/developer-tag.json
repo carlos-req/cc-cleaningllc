@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_developer_tags",
+  "info": {
+    "displayName": "developerTag"
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
