@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main {
+  min-height: 100vh;
+}
+
+.gradient {
+  height: 500px;
+  width: 100%;
+  max-width: 2000px;
+  background: rgb(17, 149, 255);
+  background: radial-gradient(
+    circle,
+    rgba(17, 149, 255, 0.3981967787114846) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(17, 149, 255, 0.41220238095238093) 100%
+  );
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 70%;
+  filter: blur(60px) saturate(150%);
+  top: 80px;
+  opacity: 0.55;
+}
