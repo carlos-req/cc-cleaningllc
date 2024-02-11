@@ -1,5 +1,40 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface FooterFooterColumns extends Schema.Component {
+  collectionName: 'components_footer_footer_columns';
+  info: {
+    displayName: 'footerColumns';
+  };
+  attributes: {
+    footer_sections: Attribute.Relation<
+      'footer.footer-columns',
+      'oneToMany',
+      'api::footer-section.footer-section'
+    >;
+  };
+}
+
+export interface FooterFooterCopyright extends Schema.Component {
+  collectionName: 'components_footer_footer_copyrights';
+  info: {
+    displayName: 'footerCopyright';
+  };
+  attributes: {
+    copyright: Attribute.String;
+  };
+}
+
+export interface FooterFooterDevTag extends Schema.Component {
+  collectionName: 'components_footer_footer_dev_tags';
+  info: {
+    displayName: 'footerDevTag';
+  };
+  attributes: {
+    developerTag: Attribute.String;
+    developerLink: Attribute.String;
+  };
+}
+
 export interface FooterFooterLink extends Schema.Component {
   collectionName: 'components_footer_footer_links';
   info: {
@@ -11,6 +46,29 @@ export interface FooterFooterLink extends Schema.Component {
     url: Attribute.String;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
     target: Attribute.Enumeration<['_blank']>;
+  };
+}
+
+export interface FooterFooterLogo extends Schema.Component {
+  collectionName: 'components_footer_footer_logos';
+  info: {
+    displayName: ' footerLogo';
+  };
+  attributes: {
+    companyLogo: Attribute.Media;
+    companyName: Attribute.String;
+  };
+}
+
+export interface FooterFooterSocial extends Schema.Component {
+  collectionName: 'components_footer_footer_socials';
+  info: {
+    displayName: 'footerSocial';
+  };
+  attributes: {
+    url: Attribute.String;
+    target: Attribute.Enumeration<['_blank']>;
+    name: Attribute.String;
   };
 }
 
@@ -63,17 +121,6 @@ export interface SharedCompanyButton extends Schema.Component {
   };
 }
 
-export interface SharedDeveloperTag extends Schema.Component {
-  collectionName: 'components_shared_developer_tags';
-  info: {
-    displayName: 'developerTag';
-  };
-  attributes: {
-    tag: Attribute.String;
-    url: Attribute.String;
-  };
-}
-
 export interface SharedLink extends Schema.Component {
   collectionName: 'components_shared_links';
   info: {
@@ -122,30 +169,22 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
-export interface SharedSocialNetwork extends Schema.Component {
-  collectionName: 'components_shared_social_networks';
-  info: {
-    displayName: 'socialNetwork';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'footer.footer-columns': FooterFooterColumns;
+      'footer.footer-copyright': FooterFooterCopyright;
+      'footer.footer-dev-tag': FooterFooterDevTag;
       'footer.footer-link': FooterFooterLink;
+      'footer.footer-logo': FooterFooterLogo;
+      'footer.footer-social': FooterFooterSocial;
       'global.navigation': GlobalNavigation;
       'shared.button': SharedButton;
       'shared.card': SharedCard;
       'shared.company-button': SharedCompanyButton;
-      'shared.developer-tag': SharedDeveloperTag;
       'shared.link': SharedLink;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
-      'shared.social-network': SharedSocialNetwork;
     }
   }
 }

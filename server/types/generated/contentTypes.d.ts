@@ -781,6 +781,45 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    footerItems: Attribute.DynamicZone<
+      [
+        'footer.footer-logo',
+        'footer.footer-social',
+        'footer.footer-dev-tag',
+        'footer.footer-columns',
+        'footer.footer-copyright'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFooterSectionFooterSection extends Schema.CollectionType {
   collectionName: 'footer_sections';
   info: {
@@ -818,6 +857,7 @@ export interface ApiNavNav extends Schema.SingleType {
     singularName: 'nav';
     pluralName: 'navs';
     displayName: 'Navigation';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -826,6 +866,7 @@ export interface ApiNavNav extends Schema.SingleType {
     leftButton: Attribute.Component<'shared.company-button'>;
     navLinks: Attribute.Component<'shared.link', true>;
     rightButton: Attribute.Component<'shared.button'>;
+    rightButton2: Attribute.Component<'shared.button'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,6 +921,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::footer.footer': ApiFooterFooter;
       'api::footer-section.footer-section': ApiFooterSectionFooterSection;
       'api::nav.nav': ApiNavNav;
       'api::page.page': ApiPagePage;

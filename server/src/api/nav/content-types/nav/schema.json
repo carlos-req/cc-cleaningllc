@@ -4,7 +4,8 @@
   "info": {
     "singularName": "nav",
     "pluralName": "navs",
-    "displayName": "Navigation"
+    "displayName": "Navigation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,11 @@
       "component": "shared.link"
     },
     "rightButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "rightButton2": {
       "type": "component",
       "repeatable": false,
       "component": "shared.button"

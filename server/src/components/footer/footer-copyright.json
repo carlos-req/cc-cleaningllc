@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_footer_footer_copyrights",
+  "info": {
+    "displayName": "footerCopyright"
+  },
+  "options": {},
+  "attributes": {
+    "copyright": {
+      "type": "string"
+    }
+  }
+}

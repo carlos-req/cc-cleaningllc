@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_footer_footer_socials",
+  "info": {
+    "displayName": "footerSocial"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "_blank"
+      ]
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

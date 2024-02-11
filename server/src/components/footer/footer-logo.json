@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_footer_footer_logos",
+  "info": {
+    "displayName": " footerLogo"
+  },
+  "options": {},
+  "attributes": {
+    "companyLogo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "companyName": {
+      "type": "string"
+    }
+  }
+}
