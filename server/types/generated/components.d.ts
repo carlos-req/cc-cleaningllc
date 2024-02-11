@@ -1,15 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface GlobalFooter extends Schema.Component {
-  collectionName: 'components_global_footers';
+export interface FooterFooterLink extends Schema.Component {
+  collectionName: 'components_footer_footer_links';
   info: {
-    displayName: 'Footer';
-    description: '';
+    displayName: 'footerLink';
+    icon: 'link';
   };
   attributes: {
-    footerColumns: Attribute.Component<'shared.footer-columns', true>;
-    socialNetworks: Attribute.Component<'shared.social-network', true>;
-    logoButton: Attribute.Component<'shared.company-button'>;
+    title: Attribute.String;
+    url: Attribute.String;
+    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    target: Attribute.Enumeration<['_blank']>;
   };
 }
 
@@ -70,21 +71,6 @@ export interface SharedDeveloperTag extends Schema.Component {
   attributes: {
     tag: Attribute.String;
     url: Attribute.String;
-  };
-}
-
-export interface SharedFooterColumns extends Schema.Component {
-  collectionName: 'components_shared_footer_columns';
-  info: {
-    displayName: 'FooterColumns';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    href: Attribute.String;
-    label: Attribute.String;
-    target: Attribute.Enumeration<['_blank']>;
-    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 
@@ -150,13 +136,12 @@ export interface SharedSocialNetwork extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'global.footer': GlobalFooter;
+      'footer.footer-link': FooterFooterLink;
       'global.navigation': GlobalNavigation;
       'shared.button': SharedButton;
       'shared.card': SharedCard;
       'shared.company-button': SharedCompanyButton;
       'shared.developer-tag': SharedDeveloperTag;
-      'shared.footer-columns': SharedFooterColumns;
       'shared.link': SharedLink;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;

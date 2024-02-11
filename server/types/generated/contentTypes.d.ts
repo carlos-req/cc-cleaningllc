@@ -362,63 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiGlobalGlobal extends Schema.SingleType {
-  collectionName: 'globals';
-  info: {
-    singularName: 'global';
-    pluralName: 'globals';
-    displayName: 'Global';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    navigation: Attribute.Component<'global.navigation'>;
-    footer: Attribute.Component<'global.footer'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::global.global',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::global.global',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPagePage extends Schema.CollectionType {
-  collectionName: 'pages';
-  info: {
-    singularName: 'page';
-    pluralName: 'pages';
-    displayName: 'page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    slug: Attribute.String;
-    seo: Attribute.Component<'shared.seo'>;
-    metaImage: Attribute.Media & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -838,6 +781,87 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiFooterSectionFooterSection extends Schema.CollectionType {
+  collectionName: 'footer_sections';
+  info: {
+    singularName: 'footer-section';
+    pluralName: 'footer-sections';
+    displayName: 'footerSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    links: Attribute.Component<'footer.footer-link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer-section.footer-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer-section.footer-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavNav extends Schema.SingleType {
+  collectionName: 'navs';
+  info: {
+    singularName: 'nav';
+    pluralName: 'navs';
+    displayName: 'Navigation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    leftButton: Attribute.Component<'shared.company-button'>;
+    navLinks: Attribute.Component<'shared.link', true>;
+    rightButton: Attribute.Component<'shared.button'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::nav.nav', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::nav.nav', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    slug: Attribute.String;
+    seo: Attribute.Component<'shared.seo'>;
+    metaImage: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -848,8 +872,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::global.global': ApiGlobalGlobal;
-      'api::page.page': ApiPagePage;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -858,6 +880,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::footer-section.footer-section': ApiFooterSectionFooterSection;
+      'api::nav.nav': ApiNavNav;
+      'api::page.page': ApiPagePage;
     }
   }
 }

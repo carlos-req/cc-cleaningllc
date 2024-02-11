@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "navs",
+  "info": {
+    "singularName": "nav",
+    "pluralName": "navs",
+    "displayName": "Navigation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "leftButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.company-button"
+    },
+    "navLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "rightButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    }
+  }
+}
