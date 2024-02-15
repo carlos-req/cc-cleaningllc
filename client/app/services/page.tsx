@@ -28,7 +28,7 @@ export default function Services() {
             <Link href="/contact">Message Us</Link>
           </button>
         </div>
-        <div class="hidden md:block h-[250px] min-h-[2em] w-0.5 self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-100"></div>
+        <div className="hidden md:block h-[250px] min-h-[2em] w-0.5 self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-100"></div>
         <div className="flex flex-col items-center justify-center text-center">
           <h3 className="mb-5 text-2xl">Ready to book one of our services?</h3>
           <p className="mb-5 text-lg">
